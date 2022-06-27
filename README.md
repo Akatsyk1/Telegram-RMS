@@ -4,16 +4,16 @@ The bot works in this way, you run the file 'specpctgbot.py', and it is ready to
 
 
 
-**Functions:
-**+ Computer shutdown.
-**+ Output of all computer processes.
-**+ Sending a screenshot Features will be added over time. 
-**+ Displaying a dialog box on the screen with the text that you set as a parameter when calling the function.  
-**+ Restart computer.  
-**+ Lock and unlock keyboard and mouse.
+Functions:  
++ Computer shutdown.  
++ Output of all computer processes.  
++ Sending a screenshot Features will be added over time.   
++ Displaying a dialog box on the screen with the text that you set as a parameter when calling the function.  
++ Restart computer.  
++ Lock and unlock keyboard and mouse.  
 
 **The author is not responsible for the damage that this bot can cause, and so on.  
-File 'specpc.py', it implements functions.  
+File 'specpc.py', it implements functions.    
 The file 'specpctgbot.py' is an implementation of the telegram bot.  
 
 
