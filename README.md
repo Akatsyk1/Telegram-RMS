@@ -9,6 +9,7 @@ Functions:
 The author is not responsible for the damage that this bot can cause, and so on.  
 File 'specpc.py', it implements functions.  
 The file 'specpctgbot.py' is an implementation of the telegram bot.  
+pip install Pillow  
 
 Bot performance modules:  
 ```
