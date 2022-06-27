@@ -16,4 +16,5 @@ Bot performance modules:
 pip install psutil
 pip install pyautogui
 pip install Pillow
+pip install keyboard
 ```
