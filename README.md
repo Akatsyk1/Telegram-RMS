@@ -1,6 +1,6 @@
 **# Telegram-bot-to-control-your-computer.
 **To control your computer, you need to insert your bot token into the code, and ID of your telegram account, and run it from the computer you want to control.
-The bot works in this way, you run the file 'specpctgbot.py', and it is ready to process your requests that you send in telegram to your bot. You must definitely download the two files and put them in the same folder for them to work.
+The bot works in this way, you run the file 'specpctgbot.py', and it is ready to process your requests that you send in telegram to your bot. You must definitely download the two files and put them in the same folder for them to work.**
 
 
 
