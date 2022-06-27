@@ -7,7 +7,7 @@ from aiogram.utils.markdown import hbold, hlink
 import keyboard
 
 admins = [] # id user admins, example: 871278
-bot = Bot(token='', parse_mode=types.ParseMode.HTML) #bot koten
+bot = Bot(token='', parse_mode=types.ParseMode.HTML) #bot token
 
 
 @dp.message_handler(commands='start')
