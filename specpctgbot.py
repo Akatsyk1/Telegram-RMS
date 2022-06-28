@@ -1,16 +1,3 @@
-#╔══╦═══╦═══╦══╦════╦══╦═══╗
-#║╔═╣╔═╗║╔══╣╔╗╠═╗╔═╣╔╗║╔═╗║
-#║║─║╚═╝║╚══╣╚╝║─║║─║║║║╚═╝║
-#║║─║╔╗╔╣╔══╣╔╗║─║║─║║║║╔╗╔╝
-#║╚═╣║║║║╚══╣║║║─║║─║╚╝║║║║
-#╚══╩╝╚╝╚═══╩╝╚╝─╚╝─╚══╩╝╚╝
-#╔══╦╗╔══╦══╦════╦══╦╗╔╦╗╔══╗╔╗
-#║╔╗║║║╔═╣╔╗╠═╗╔═╣╔═╣║║║║║╔═╬╝║
-#║╚╝║╚╝║─║╚╝║─║║─║╚═╣╚╝║╚╝║─╚╗║
-#║╔╗║╔╗║─║╔╗║─║║─╚═╗╠═╗║╔╗║──║║
-#║║║║║║╚═╣║║║─║║─╔═╝║╔╝║║║╚═╗║║
-#╚╝╚╩╝╚══╩╝╚╝─╚╝─╚══╝╚═╩╝╚══╝╚╝
-
 from specpc import *
 import os
 import json
@@ -19,17 +6,37 @@ from aiogram.dispatcher.filters import Text
 from aiogram.utils.markdown import hbold, hlink
 import keyboard
 
-admins = [] # id user admins, example: 871278
-bot = Bot(token='', parse_mode=types.ParseMode.HTML) #bot token
+admins = [] # admin IDs
+bot = Bot(token='', parse_mode=types.ParseMode.HTML) # token bot
 dp = Dispatcher(bot)
+
 
 @dp.message_handler(commands='start')
 async def start_command(message: types.Message):
     buttons = ['Get screenshot 💻', 'Switch off pc 🔴', 'Block keyboard, mouse 🐀', 'Unblock keyboard, mouse 🐀',
-               'Get list tasks 👦','Restart computer 🖥']
+               'Get list tasks 👦', 'Restart computer 🖥']
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(*buttons)
-    await message.answer(f'{hbold("Commands: ")} \n {hbold("/alert <message> Displays a dialog box with the message you passed in the argument.")} \n', reply_markup=keyboard)
+    await message.answer(f'{hbold("Commands: ")} \n' \
+                         f'{hbold("/alert <message> Displays a dialog box with the message you passed in the argument. ")} \n' \
+                         f'{hbold("/killp <process> Terminates a process.")} \n', reply_markup=keyboard)
+
+
+@dp.message_handler(commands='killp')
+async def command_killprocess(message: types.Message):
+    if message.from_user.id in admins:
+        args = message.text.split()
+        if args == 0:
+            await bot.send_message(message.chat.id, text=f'{hbold("More than one process cannot be allowed.")}')
+            return
+        elif len(args) > 2:
+            await bot.send_message(message.chat.id, text=f'{hbold("Only one process can be terminated")}')
+            return
+        try:
+            kill_process(args[1])
+        except Exception:
+            await bot.send_message(message.chat.id, text='There is no such process.')
+            return
 
 
 @dp.message_handler(commands='alert')
@@ -59,7 +66,7 @@ async def command_listtasks(message: types.Message):
         list_tasks = get_process()
         for task in list_tasks:
             text = hbold(task)
-            await bot.send_message(message.chat.id, text=text)
+            await bot.send_message(message.chat.id, text=text, disable_notification=True)
     else:
         return
 
