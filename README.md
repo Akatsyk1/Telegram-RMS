@@ -13,6 +13,7 @@ Functions:
 + Displaying a dialog box on the screen with the text that you set as a parameter when calling the function.  
 + Restart computer.  
 + Lock and unlock keyboard and mouse.  
++ End any process that is running on the computer.  
 
 **The author is not responsible for the damage that this bot can cause, and so on.  
 File 'specpc.py', it implements functions.    
