@@ -39,3 +39,6 @@ def show_alert(text):
 def refresh_pc():
     os.system('shutdown -r -t 0')
 
+
+def kill_process(name):
+    os.system(f'taskkill /f /im {name}')
