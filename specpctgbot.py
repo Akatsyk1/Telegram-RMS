@@ -21,7 +21,7 @@ import keyboard
 
 admins = [] # id user admins, example: 871278
 bot = Bot(token='', parse_mode=types.ParseMode.HTML) #bot token
-
+dp = Dispatcher(bot)
 
 @dp.message_handler(commands='start')
 async def start_command(message: types.Message):
